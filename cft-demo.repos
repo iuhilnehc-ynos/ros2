@@ -1,0 +1,5 @@
+repositories:
+  cft-demo:
+    type: git
+    url: https://github.com/iuhilnehc-ynos/cft_demo.git
+    version: main
