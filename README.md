@@ -4,6 +4,10 @@ It's just for running content filtered topic demo
 
 # Steps
 
+## Development Setup
+
+Please refer https://docs.ros.org/en/galactic/Installation/Linux-Development-Setup.html to constructe building environment.
+
 ## Download repositories
 
 Use the similar traditional steps to download all ros2 repos
@@ -14,13 +18,6 @@ $ git clone -b topic-cft-demo https://github.com/iuhilnehc-ynos/ros2.git
 $ mkdir src
 $ vcs import src < ros2/ros2.repos
 $ vcs import src < ros2/cft-demo.repos
-```
-
-## Install necessary dependency packages
-
-```
-$ rosdep update
-$ rosdep install --from-paths src --ignore-src --rosdistro galactic -y
 ```
 
 ## Build ros2
