@@ -25,7 +25,7 @@ $ rosdep install --from-paths src --ignore-src --rosdistro galactic -y
 
 ## Build ros2
 
-- Ignore unrelated repos
+- Ignore some unrelated repositories
 
 ```
 $ pushd src
@@ -34,7 +34,7 @@ $ touch ./ros2/rviz/COLCON_IGNORE \
 $ popd
 ```
 
-- build
+- Build without test
 
 ```
 $ colcon build --cmake-args -DBUILD_TESTING:BOOL=OFF
@@ -51,17 +51,77 @@ $ source install/setup.bash
 $ RMW_IMPLEMENTATION=rmw_cyclonedds_cpp ros2 launch cft_demo cft_demo.launch.py
 ```
 
+<details><summary> log </summary>
+<p>
+```shell
+$ RMW_IMPLEMENTATION=rmw_cyclonedds_cpp ros2 launch cft_demo cft_demo.launch.py
+[INFO] [launch]: All log files can be found below /home/chenlh/.ros/log/2021-10-15-11-16-42-014534-OptiPlex-7080-759362
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [subscriber_member_function_with_content_filtered_topic-1]: process started with pid [759364]
+[subscriber_member_function_with_content_filtered_topic-1] [WARN] [1634267802.140929276] [minimal_subscriber_with_content_filtered_topic]: Content filtered topic is not enabled for the subscription.
+[INFO] [parameter_blackboard-2]: process started with pid [759375]
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634267804.155788410] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/parameter_blackboard', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   use_sim_time=false
+[subscriber_member_function_with_content_filtered_topic-1] 
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634267804.156980885] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/parameter_blackboard', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   qos_overrides./parameter_events.publisher.durability=volatile
+[subscriber_member_function_with_content_filtered_topic-1] 
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634267804.157087250] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/parameter_blackboard', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   qos_overrides./parameter_events.publisher.history=keep_last
+[subscriber_member_function_with_content_filtered_topic-1] 
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634267804.157188950] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/parameter_blackboard', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   qos_overrides./parameter_events.publisher.depth=1000
+[subscriber_member_function_with_content_filtered_topic-1] 
+[parameter_blackboard-2] [INFO] [1634267804.157181812] [parameter_blackboard]: Parameter blackboard node named '/parameter_blackboard' ready, and serving '5' parameters already!
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634267804.157285881] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/parameter_blackboard', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   qos_overrides./parameter_events.publisher.reliability=reliable
+[subscriber_member_function_with_content_filtered_topic-1] 
+
+# after `RMW_IMPLEMENTATION=rmw_cyclonedds_cpp ros2 param set /parameter_blackboard param1 True`
+
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634267950.696183383] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/_ros2cli_759763', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   use_sim_time=false
+[subscriber_member_function_with_content_filtered_topic-1] 
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634267951.203208601] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/parameter_blackboard', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   param1=true
+[subscriber_member_function_with_content_filtered_topic-1] 
+
+# after `RMW_IMPLEMENTATION=rmw_cyclonedds_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic param1 True`
+
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634267992.896036432] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/_ros2cli_759807', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   use_sim_time=false
+[subscriber_member_function_with_content_filtered_topic-1] 
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634267993.402053398] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/parameter_blackboard', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  changed parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   param1=true
+[subscriber_member_function_with_content_filtered_topic-1] 
+```
+</p>
+</details>
+
 - console B
 
 ```
 $ source install/setup.bash
-$ RMW_IMPLEMENTATION=rmw_cyclonedds_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic test_param True
-```
-
-- log
-
-```
-todo
+$ RMW_IMPLEMENTATION=rmw_cyclonedds_cpp ros2 param set /parameter_blackboard param1 True
+$ RMW_IMPLEMENTATION=rmw_cyclonedds_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic param1 True
 ```
 
 ### RMW implementation with FastDDS
@@ -73,16 +133,67 @@ $ source install/setup.bash
 $ RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 launch cft_demo cft_demo.launch.py
 ```
 
+<details><summary> log </summary>
+<p>
+```shell
+$ RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 launch cft_demo cft_demo.launch.py
+[INFO] [launch]: All log files can be found below /home/chenlh/.ros/log/2021-10-15-11-28-25-821673-OptiPlex-7080-760378
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [subscriber_member_function_with_content_filtered_topic-1]: process started with pid [760381]
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634268505.973385035] [minimal_subscriber_with_content_filtered_topic]: get_cft_expression_parameters filter_expression: [node = %0]
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634268505.973512281] [minimal_subscriber_with_content_filtered_topic]: get_cft_expression_parameters expression_parameters: [[/minimal_subscriber_with_content_filtered_topic]]
+[INFO] [parameter_blackboard-2]: process started with pid [760393]
+[parameter_blackboard-2] [INFO] [1634268508.326930900] [parameter_blackboard]: Parameter blackboard node named '/parameter_blackboard' ready, and serving '5' parameters already!
+
+# after running `RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /parameter_blackboard param1 True`
+<no log>
+
+
+# after running `RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic param1 True`
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634268540.982335260] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/minimal_subscriber_with_content_filtered_topic', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   param1=true
+[subscriber_member_function_with_content_filtered_topic-1] 
+
+# after running `RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic param2 True`
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634268568.189592797] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/minimal_subscriber_with_content_filtered_topic', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   param2=true
+[subscriber_member_function_with_content_filtered_topic-1]
+
+# after running `RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic test_param True`
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634268636.971446732] [minimal_subscriber_with_content_filtered_topic]: get_cft_expression_parameters filter_expression: [node = %0 AND changed_parameters[0].name = %1]
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634268636.971611826] [minimal_subscriber_with_content_filtered_topic]: get_cft_expression_parameters expression_parameters: [[/minimal_subscriber_with_content_filtered_topic][test_param]]
+[subscriber_member_function_with_content_filtered_topic-1] [WARN] [1634268636.971717549] [minimal_subscriber_with_content_filtered_topic]: Though set cft expression parameters successfully and get the expected options,but the behavior is not expected
+
+# to run `RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /parameter_blackboard param2 True` will get the following message is unexpected.
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634268697.319479203] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/_ros2cli_760577', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   use_sim_time=false
+[subscriber_member_function_with_content_filtered_topic-1] 
+[subscriber_member_function_with_content_filtered_topic-1] [INFO] [1634268697.832532775] [minimal_subscriber_with_content_filtered_topic]: I heard a ParameterEvent for Node '/parameter_blackboard', 
+[subscriber_member_function_with_content_filtered_topic-1] Parameter event:
+[subscriber_member_function_with_content_filtered_topic-1]  new parameters:
+[subscriber_member_function_with_content_filtered_topic-1]   param2=true
+[subscriber_member_function_with_content_filtered_topic-1]
+
+```
+</p>
+</details>
+
 - console B
 
 ```
 $ source install/setup.bash
+$ RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /parameter_blackboard param1 True
+$ RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic param1 True
+$ RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic param2 True
+# after creating the 'test_param', it's expected that the executable '/minimal_subscriber_with_content_filtered_topic' can only focus on
+# if 'test_param' is updated.
 $ RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic test_param True
-```
-
-- log
-
-```
-todo
+$ RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /parameter_blackboard param2 True
 ```
 
