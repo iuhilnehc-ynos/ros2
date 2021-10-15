@@ -6,7 +6,7 @@ It's just for running content filtered topic demo
 
 ## Development Setup
 
-Please refer https://docs.ros.org/en/galactic/Installation/Linux-Development-Setup.html to constructe building environment.
+Please refer to https://docs.ros.org/en/galactic/Installation/Linux-Development-Setup.html to build environment.
 
 ## Download repositories
 
@@ -27,6 +27,7 @@ $ vcs import src < ros2/cft-demo.repos
 ```
 $ pushd src
 $ touch ./ros2/rviz/COLCON_IGNORE \
+    ./ros2/ros1_bridge/COLCON_IGNORE \
     ./ros-visualization/COLCON_IGNORE
 $ popd
 ```
