@@ -184,7 +184,7 @@ $ colcon build --cmake-args -DBUILD_TESTING:BOOL=OFF
   [subscriber_member_function_with_content_filtered_topic-1]   test_param=false
   [subscriber_member_function_with_content_filtered_topic-1]
 
-  // after running `RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /parameter_blackboard param3 True` successfuly
+  // after running `RMW_IMPLEMENTATION=rmw_fastrtps_cpp ros2 param set /minimal_subscriber_with_content_filtered_topic param3 True` successfuly
   no log
   ```
 
