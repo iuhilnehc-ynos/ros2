@@ -34,7 +34,7 @@ repositories:
   eProsima/Fast-DDS:
     type: git
     url: https://github.com/eProsima/Fast-DDS.git
-    version: 66c15501c8d625d45c73b33430907ab5422370b5
+    version: 25446ceef12b1223d7b557c163d74d23f6d01047
   eProsima/foonathan_memory_vendor:
     type: git
     url: https://github.com/eProsima/foonathan_memory_vendor.git
