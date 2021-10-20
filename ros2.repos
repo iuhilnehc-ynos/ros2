@@ -318,7 +318,7 @@ repositories:
   ros2/rmw_fastrtps:
     type: git
     url: https://github.com/iuhilnehc-ynos/rmw_fastrtps.git
-    version: topic-content_filtered_topic-updated
+    version: 9a66bfdd1e3339f15c9792144946277a6d219cbd
   ros2/rmw_implementation:
     type: git
     url: https://github.com/iuhilnehc-ynos/rmw_implementation.git
