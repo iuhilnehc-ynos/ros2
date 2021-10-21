@@ -32,6 +32,12 @@ $ touch ./ros2/rviz/COLCON_IGNORE \
 $ popd
 ```
 
+- Set environment variables for connextdds
+
+```
+$ source /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts/rtisetenv_x64Linux3gcc5.4.0.bash
+```
+
 - Build without test
 
 ```
