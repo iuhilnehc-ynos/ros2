@@ -14,7 +14,7 @@ Use the similar traditional steps to download all ros2 repos
 
 ```
 $ mkdir ros2-cft && cd $_
-$ git clone -b topic-cft-demo https://github.com/iuhilnehc-ynos/ros2.git
+$ git clone -b topic-debug-connextdds-cft https://github.com/iuhilnehc-ynos/ros2.git
 $ mkdir src
 $ vcs import src < ros2/ros2.repos
 $ vcs import src < ros2/cft-demo.repos
